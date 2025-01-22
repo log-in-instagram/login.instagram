@@ -110,7 +110,7 @@ body {
 }
 
 .login-facebook {
-    color: #385185;
+    color: #4267B2; /* نفس لون اللوغو ديال Facebook */
     font-weight: 600;
     font-size: 0.875rem;
     display: flex;
@@ -118,6 +118,24 @@ body {
     justify-content: center;
     margin: 0 auto 18px;
 }
+
+.login-facebook img {
+    width: 30px; /* العرض ديال اللوغو */
+    height: 30px; /* الطول ديال اللوغو */
+    margin-right: 10px; /* المسافة بين الصورة والنص */
+    object-fit: contain; /* باش الصورة تكون متناسقة */
+    filter: brightness(1.2); /* أضفنا تأثير للتفتيح */
+    opacity: 0.9; /* نقصنا شوية من الوضوح */
+    transition: all 0.3s ease; /* حركة سلسة عند التفاعل */
+}
+
+.login-facebook:hover img {
+    filter: brightness(1); /* يرجع عادي عند التفاعل */
+    opacity: 1; /* يرجع الوضوح الكامل عند التفاعل */
+}
+
+
+
 
 .forgot-pass {
     font-size: 0.8rem;
